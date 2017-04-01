@@ -1,30 +1,34 @@
 "use strict";
 (function(exports) {
+
+  var controller;
+
   function NoteController(noteList) { //Should I be passing in NoteListView instead to adhere to SRP?
-    this.noteList = noteList;
+    controller = this;
+    controller.noteList = noteList;
   }
 
   // Interaction directly with the controller
   NoteController.prototype.createNoteListView = function(noteListView = new NoteListView(this.noteList)) {
-    this.noteListView = noteListView
+    controller.noteListView = noteListView
   };
 
   NoteController.prototype.addNoteToList = function(text) {
-    this.noteList.addNote(text);
+    controller.noteList.addNote(text);
   };
 
   NoteController.prototype.insertHTML = function(element = document.getElementById("app")) {
     var element = element;
-    element.innerHTML = this.noteListView.generateHTML();
+    element.innerHTML = controller.noteListView.generateHTML();
   };
 
   // Hash change for selecting notes and seeing corresponding text:
   NoteController.prototype.makeUrlChangeShowNoteForCurrentPage = function() {
-    window.addEventListener("hashchange", this.showNoteForCurrentPage.bind(this));
+    window.addEventListener("hashchange", controller.showNoteForCurrentPage.bind(this));
   };
 
   NoteController.prototype.showNoteForCurrentPage = function(){
-    this.showNote(this.getNoteFromUrl(window.location));
+    controller.showNote(controller.getNoteFromUrl(window.location));
   };
 
   NoteController.prototype.getNoteFromUrl = function(location) {
@@ -33,7 +37,7 @@
 
   NoteController.prototype.showNote = function() {
     var noteID = location.hash.replace( /^\D+/g, '');
-    var correspondingNoteText = this.noteList.viewNotes()[noteID].text;
+    var correspondingNoteText = controller.noteList.viewNotes()[noteID].text;
     document
       .getElementById("note-content")
       .innerHTML = correspondingNoteText;
@@ -44,6 +48,8 @@
       document.querySelector("#text").addEventListener("submit", function(onsubmit) {
       onsubmit.preventDefault();
       var saveNoteValue = text.elements["text2"].value
+      controller.addNoteToList(saveNoteValue);
+      controller.insertHTML();
       text.elements["text2"].value = ''
     });
   };
