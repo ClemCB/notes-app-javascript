@@ -41,9 +41,10 @@
 
   // Note Controller takes user note
   NoteController.prototype.userWriteAndSaveNoteOnForm = function() {
-      document.querySelector("#text").addEventListener("click", function(onsubmit) {
+      document.querySelector("#text").addEventListener("submit", function(onsubmit) {
       onsubmit.preventDefault();
-      console.log('Submit has been pressed')
+      var saveNoteValue = text.elements["text2"].value
+      text.elements["text2"].value = ''
     });
   };
 
