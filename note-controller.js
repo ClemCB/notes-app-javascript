@@ -47,11 +47,15 @@
   NoteController.prototype.userWriteAndSaveNoteOnForm = function() {
       document.querySelector("#text").addEventListener("submit", function(onsubmit) {
       onsubmit.preventDefault();
-      var saveNoteValue = text.elements["text2"].value
-      controller.addNoteToList(saveNoteValue);
-      controller.insertHTML();
-      text.elements["text2"].value = ''
+      controller.saveNoteAndClearTextAreaOfHtmlForm();
     });
+  };
+
+  NoteController.prototype.saveNoteAndClearTextAreaOfHtmlForm = function() {
+    var saveNoteValue = text.elements["text2"].value
+    controller.addNoteToList(saveNoteValue);
+    controller.insertHTML();
+    text.elements["text2"].value = ''
   };
 
   exports.NoteController = NoteController;

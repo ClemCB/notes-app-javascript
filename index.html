@@ -1,35 +1,32 @@
+<!DOCTYPE html>
 <html>
-
-<head>
-</head>
-
-<body>
-  <div>
+  <head>
+    <meta charset="utf-8">
+    <title>Notes App: A Very Bad EverNote (which doesn't save your notes)</title>
+  </head>
+  <body>
     <form id="text" action="#notes/" method="post">
       Your Note:<br>
       <input id="text2" type="textarea" name="notebody"><br>
       <input id="submit" type="submit" value="Save Note">
     </form>
-  </div>
 
-  <div id="app">
-  </div>
+  <div id="app"></div>
 
   <div id="note-content"></div>
 
-
+  <!-- JavaScript Models, View and Controller -->
   <script src="note-model.js"></script>
   <script src="note-list-model.js"></script>
   <script src="note-list-view.js"></script>
   <script src="note-controller.js"></script>
+
+  <!-- NoteController Instantiated & three methods called -->
   <script>
     noteController = new NoteController(noteList = new NoteList());
 
     noteController.createNoteListView();
-    noteController.insertHTML()
-
     noteController.makeUrlChangeShowNoteForCurrentPage();
-
     noteController.userWriteAndSaveNoteOnForm()
 
   </script>
