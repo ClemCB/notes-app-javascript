@@ -23,9 +23,6 @@
   };
 
   NoteController.prototype.showNoteForCurrentPage = function(){
-    console.log(this)
-    // console.log(controller)
-
     this.showNote(this.getNoteFromUrl(window.location));
   };
 
@@ -34,10 +31,10 @@
   };
 
   NoteController.prototype.showNote = function(id) {
-    console.log(this.noteList._notes)
+    var noteID = location.hash.replace( /^\D+/g, '');
     document
-    .getElementById("note-content")
-    .innerHTML = this.noteList._notes[id].text;
+      .getElementById("note-content")
+      .innerHTML = this.noteList._notes[noteID].text;
   };
 
   exports.NoteController = NoteController;

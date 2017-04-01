@@ -1,6 +1,6 @@
-# Note App
+# Note App: Makers Week 7 (Further JavaScript)
 
-##User Stories:
+## User Stories
 
 ```
 As a programmer
