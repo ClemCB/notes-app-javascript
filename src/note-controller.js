@@ -3,14 +3,13 @@
 
   var controller;
 
-  function NoteController(noteList) { //Should I be passing in NoteListView instead to adhere to SRP?
+  function NoteController(noteList) {
     controller = this;
     controller.noteList = noteList;
   }
 
-  // Interaction directly with the controller
   NoteController.prototype.createNoteListView = function(noteListView = new NoteListView(this.noteList)) {
-    controller.noteListView = noteListView
+    controller.noteListView = noteListView;
   };
 
   NoteController.prototype.addNoteToList = function(text) {
@@ -47,14 +46,18 @@
   NoteController.prototype.userWriteAndSaveNoteOnForm = function() {
       document.querySelector("#text").addEventListener("submit", function(onsubmit) {
       onsubmit.preventDefault();
-      controller.saveNoteAndClearTextAreaOfHtmlForm();
+      controller.saveNoteFromHtmlForm();
     });
   };
 
-  NoteController.prototype.saveNoteAndClearTextAreaOfHtmlForm = function() {
+  NoteController.prototype.saveNoteFromHtmlForm = function() {
     var saveNoteValue = text.elements["text2"].value
     controller.addNoteToList(saveNoteValue);
     controller.insertHTML();
+    controller.clearTextAreaOfHtmlForm();
+  };
+
+  NoteController.prototype.clearTextAreaOfHtmlForm = function() {
     text.elements["text2"].value = ''
   };
 

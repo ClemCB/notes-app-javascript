@@ -1,0 +1,57 @@
+html {
+  font-family: 'Gloria Hallelujah', cursive;
+  background-image: url("https://images.unsplash.com/photo-1471970471555-19d4b113e9ed?dpr=2&auto=compress,format&fit=crop&w=568&h=568&q=80&cs=tinysrgb&crop=");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1 {
+  color: #4278B5;
+  text-align:center;
+}
+
+#goInTheCenter {
+  font-size: 15px;
+  margin: auto;
+  width: 300px;
+}
+
+#goInTheCenter a {
+  color: inherit;
+  font-size: 15px;
+  text-decoration: underline;
+  text-align: left;
+}
+
+.textarea {
+  width: 50%;
+  height: 30px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+  margin-right: 70px;
+  display: inline-block;
+  float: left;
+  font-size: 15px;
+  margin: 10px;
+  font-family: inherit;
+}
+
+.button {
+  border: 2px outset white;
+  margin-top: 5px;
+  font-size: 15px;
+  text-decoration: none;
+  color: #2C3E50;
+  background-color: #E6E8EA;
+  font-family: inherit;
+  display: inline-block;
+  border-radius: 15px;
+}
+
+ul {
+  padding-left:0;
+}​
