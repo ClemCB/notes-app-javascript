@@ -8,7 +8,7 @@
     <form id="text" action="#notes/" method="post">
       Your Note:<br>
       <input type="textarea" name="notebody"><br>
-      <input type="submit" value="Save Note">
+      <input id="submit" type="submit" value="Save Note">
     </form>
   </div>
 
@@ -33,6 +33,8 @@
     noteController.insertHTML()
 
     noteController.makeUrlChangeShowNoteForCurrentPage();
+    
+    noteController.userWriteAndSaveNoteOnForm()
 
   </script>
 </body>

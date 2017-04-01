@@ -4,6 +4,7 @@
     this.noteList = noteList;
   }
 
+  // Interaction directly with the controller
   NoteController.prototype.createNoteListView = function(noteListView = new NoteListView(this.noteList)) {
     this.noteListView = noteListView
   };
@@ -17,6 +18,7 @@
     element.innerHTML = this.noteListView.generateHTML();
   };
 
+  // Hash change for selecting notes and seeing corresponding text:
   NoteController.prototype.makeUrlChangeShowNoteForCurrentPage = function() {
     window.addEventListener("hashchange", this.showNoteForCurrentPage.bind(this));
   };
@@ -35,6 +37,14 @@
     document
       .getElementById("note-content")
       .innerHTML = correspondingNoteText;
+  };
+
+  // Note Controller takes user note
+  NoteController.prototype.userWriteAndSaveNoteOnForm = function() {
+      document.querySelector("#text").addEventListener("click", function(onsubmit) {
+      onsubmit.preventDefault();
+      console.log('Submit has been pressed')
+    });
   };
 
   exports.NoteController = NoteController;
