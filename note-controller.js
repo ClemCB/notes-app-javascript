@@ -2,7 +2,6 @@
 (function(exports) {
   function NoteController(noteList) { //Should I be passing in NoteListView instead to adhere to SRP?
     this.noteList = noteList;
-    // controller = this;
   }
 
   NoteController.prototype.createNoteListView = function(noteListView = new NoteListView(this.noteList)) {
@@ -30,11 +29,12 @@
     return location.hash.split("#")[1];
   };
 
-  NoteController.prototype.showNote = function(id) {
+  NoteController.prototype.showNote = function() {
     var noteID = location.hash.replace( /^\D+/g, '');
+    var correspondingNoteText = this.noteList.viewNotes()[noteID].text;
     document
       .getElementById("note-content")
-      .innerHTML = this.noteList._notes[noteID].text;
+      .innerHTML = correspondingNoteText;
   };
 
   exports.NoteController = NoteController;
